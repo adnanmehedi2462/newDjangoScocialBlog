@@ -1,0 +1,158 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+
+
+
+
+
+
+
+
+
+
+
+                
+
+
+
+
+
+        
+<div class="blog-details-area-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="single-box">
+                    <h4 class="title">{{singleView.title}}
+                    </h4>
+                    <div style="float:right;margin:20px;margin-top: 7px;right: 0;position: absolute;">
+
+                        {% if object.author == user %}
+                        <a href="{% url 'Updatepost' singleView.pk %}"  style="padding:10px 20px;background:green;color:#fff;border-radius: 5px;" > Edit </a>
+                        <a style="padding:10px 20px;background:red;color:#fff; margin-left: 10px;border-radius: 5px;" href="{% url 'deletepost' singleView.pk %}">Delete </a>
+                        {% endif %}
+                    </div>
+                    <div class="img-box">
+                        <img src="{{singleView.image.url}}" alt="image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="content contact-1">
+                    <div class="post-meta">
+                        <ul class="list">
+                            <li class="list-item">
+                                <a href="{% url 'writer' singleView.pk %}">
+                                    <i class="lar la-user icon"></i>
+                                    <span class="text">{{singleView.author.username}}</span>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#">
+                                    <i class="lar la-clock icon"></i>
+                                    <span class="text">{{singleView.created_at}}</span>
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#">
+                                    <i class="las la-tag icon"></i>
+                                    <span class="text">travel</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="info">{{singleView.content}}</p>
+                   
+                </div>
+
+
+
+
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-3 widg">
+                <div class="widget-area-wrapper style-02">
+                    <div class="widget widget-search">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <input type="search" class="form-control" placeholder="search...">
+                            </div>
+                            <button type="submit" class="form-btn-1">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="widget widget-about-author">
+                        <h5 class="widget-title">about Writer</h5>
+                        <div class="img-box">
+                            <img src="{{singleView.author.profile.image.url}}" alt="image" style="height:150px;width:150px;">
+                            <div class="content">
+                                <h3 class="title">
+                                  <a href="{% url 'writer' singleView.pk %}">{{singleView.author.first_name}} {{singleView.author.last_name}}</a>
+                                </h3>
+                                <p class="info">{{singleView.author.profile.bio}}</p>
+                             
+                                <ul class="social-link-list">
+                                    <li class="list-item">
+                                        <a href="#" tabindex="-1">
+                                            <i class="fab fa-facebook-f icon"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-item">
+                                        <a href="" tabindex="-1">
+                                            <i class="fab fa-twitter icon"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-item">
+                                        <a href="#" tabindex="-1">
+                                            <i class="fab fa-instagram icon"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-item">
+                                        <a href="#" tabindex="-1">
+                                            <i class="fas fa-rss icon"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget widget-upcomming-blog">
+                        <div class="img-box">
+                            <img src="{% static 'assets/img/widget/Upcoming-banner-03.jpg'%}" alt="image">
+                            <div class="content">
+                                <span class="catg bar">
+                                    <a href="#">travel</a>
+                                </span>
+                                <h4 class="title">
+                                    <a href="#">upcomming blog</a>
+                                </h4>
+                                <span class="catg">
+                                    <a href="#">june 19, 2021</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    
+         
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+          
+        
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

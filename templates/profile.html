@@ -1,0 +1,133 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-inner">
+                    <h2 class="page-title">{{user.username}}</h2>
+                    <ul class="page-list">
+                        <li class="list-item">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="list-item">
+                            <a href="{% url 'editprofile' %}">Update Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-author-area-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="img-box">
+                    <img src="{{user.profile.image.url}}" alt="" style="border-radius: 25% 10%;margin-bottom: 29px;">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="content-wrap">
+                    <div class="content">
+                        <h4 class="title">{{user.first_name}} {{user.last_name}}</h4>
+                        <a>{{user.email}}</a><br>
+
+                  
+                        <span class="sub-title">{{user.profile.bio}}</span>
+                        <p class="info">{{user.profile.about}}
+
+                        </p>
+
+
+
+       
+
+                      
+                        <div class="socila-link-wrap">
+                            <ul class="social-link-list">
+                                <li class="list-item">
+                                    <a href="#">
+                                        <i class="lab la-facebook-f icon"></i>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#">
+                                        <i class="lab la-instagram icon"></i>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#">
+                                        <i class="lab la-linkedin-in icon"></i>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a href="#">
+                                        <i class="lab la-pinterest-p icon"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% for user_posts in user_posts %}
+            <div class="single-blog-list-1-index-1 wow bounceInUp" data-wow-duration="1.5s">
+                <div class="content-top">
+                    
+                    <h2 class="title">
+                        <span ><img src="{{user_posts.author.profile.image.url}}" style="height:60px;width:60px;border-radius:200px"></span> <a href="{% url 'detail' user_posts.pk %}">{{user_posts.title}}</a>
+                    </h2>
+                    
+                    <div class="img-box">
+                        <img src="{{user_posts.image.url}}" alt="image">
+                    </div>
+                    <div class="content-bottom">
+                        <p class="info">{{user_posts.content|truncatewords:30}}
+                        </p>
+                        <div class="post-meta">
+                            <div class="left-content">
+                                <div class="btn-wrapper">
+                                    <a href="{% url 'detail' user_posts.pk %}" class="reading-btn">continue reading</a>
+                                </div>
+                            </div>
+                            <div class="right-content">
+                                <ul class="list">
+                                    <li class="list-item">
+                                        <a href="{% url 'writer' user_posts.pk %}">
+                                            <i class="far fa-user icon"></i>
+                                            <span class="text">{{user_posts.author}}</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-item">
+                                        <a href="#">
+                                            <i class="far fa-clock icon"></i>
+                                            <span class="text">{{user_posts.created_at}}</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-item">
+                                        <a href="#">
+                                            <i class="far fa-share-square icon"></i>
+                                            <span class="text">share</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

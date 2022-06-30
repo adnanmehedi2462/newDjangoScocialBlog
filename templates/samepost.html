@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% load static %}
+    <style>
+        @media only screen and (max-width: 991px) {
+
+            .testbox {
+                margin-top: 100px;
+
+            }
+        }
+        ,
+        @media only screen and (max-width: 599px)
+        {
+            .navbar-area.nav-style-01 .nav-container {
+
+
+        
+            padding: 20px 0 18px;
+            height:40px
+        }}
+    </style>
+    {% for all_posts in all_post %}
+<div class="testbox"> 
+        <div class="col-md-8 offset-md-2">
+
+            <div class="single-blog-list-1-index-1 wow bounceInUp" data-wow-duration="1.5s">
+                <div class="content-top">
+
+                    <h2 class="title">
+                        <span ><img
+                            src="{{all_posts.author.profile.image.url}}"
+                            style="height:60px;width:60px;border-radius:200px"></span>
+                        <a href="{% url 'detail' all_posts.pk %}">{{all_posts.title}}</a>
+                    </h2>
+
+                    <div class="img-box">
+                        <img src="{{all_posts.image.url}}" alt="image">
+                    </div>
+                    <div class="content-bottom">
+                        <p class="info">{{all_posts.content|truncatewords:30}}
+                        </p>
+                        <div class="post-meta">
+                            <div class="left-content">
+                                <div class="btn-wrapper">
+                                    <a href="{% url 'detail' all_posts.pk %}" class="reading-btn">continue reading</a>
+                                </div>
+                            </div>
+                            <div class="right-content">
+                                <ul class="list">
+                                    <li class="list-item">
+                                        <a href="{% url 'writer' all_posts.pk %}">
+                                            <i class="far fa-user icon"></i>
+                                            <span class="text">{{all_posts.author}}</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-item">
+                                        <a href="#">
+                                            <i class="far fa-clock icon"></i>
+                                            <span class="text">{{all_posts.created_at}}</span>
+                                        </a>
+                                    </li>
+                                    <li class="list-item">
+                                        <a href="#">
+                                            <i class="far fa-share-square icon"></i>
+                                            <span class="text">share</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+ 
+    </div>
+{% endblock %}

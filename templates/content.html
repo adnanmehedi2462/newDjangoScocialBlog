@@ -1,0 +1,310 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    {% load static %}
+
+    <style>
+        .fa-angle-right:before {
+            content: "\f105";
+            font-size: 23px;
+            color: #f13b3a;
+        }
+        .fa-angle-left:before {
+            content: "\f104";
+            font-size: 23px;
+            color: #f13b3a;
+        }
+    </style>
+    <div class="header-area-wrapper index-01">
+        <div class="header-area index-01 header-slider-init">
+            <div class="single-slid-item">
+                <div
+                    class="container custom-header-container bg"
+                    style="background-image:url({% static 'assets/img/header/index-01/01.jpg'%})">
+                    <div class="row h-100">
+                        <div class="col-lg-12 position-relative h-100">
+                            <div class="content">
+                                <span class="first-word space-style">travel</span>
+                                <h1 class="header-title">Travel makes one modest, you see what a tiny place you occupy in the world.
+                                </h1>
+                                <div class="btn-wrapper">
+                                    <a href="#" class="btn-default">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slid-item">
+                <div
+                    class="container custom-header-container bg"
+                    style="background-image:url({% static 'assets/img/header/index-01/02.jpg'%})">
+                    <div class="row h-100">
+                        <div class="col-lg-12 position-relative h-100">
+                            <div class="content two">
+                                <span class="first-word space-style">travel</span>
+                                <h1 class="header-title">Travel makes one modest, you see what a tiny place you occupy in the world.</h1>
+                                <div class="btn-wrapper">
+                                    <a href="#" class="btn-default">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slid-item">
+                <div
+                    class="container custom-header-container bg"
+                    style="background-image:url({% static 'assets/img/header/index-01/03.jpg'%})">
+                    <div class="row h-100">
+                        <div class="col-lg-12 position-relative h-100">
+                            <div class="content">
+                                <span class="first-word space-style">travel</span>
+                                <h1 class="header-title">Travel makes one modest, you see what a tiny place you occupy in the world.</h1>
+                                <div class="btn-wrapper">
+                                    <a href="#" class="btn-default">read more</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-list-area-wrapper index-01">
+        <div class="container custom-container-1515">
+            <div class="row">
+                <div class="col-lg-8 col-xl-9">
+
+                    {% for single in singlepost %}
+
+                        <div class="single-blog-list-1-index-1 wow bounceInUp" data-wow-duration="1.8s">
+                            <div class="content-top">
+
+                                <h2 class="title">
+
+                                    <span ><img
+                                        src="{{single.author.profile.image.url}}"
+                                        alt="image not found"
+                                        style="height:60px;width:60px;border-radius:200px"></span>
+                                    <a href="{% url 'detail' single.pk %}">{{single.title}}</a>
+
+                                </h2>
+                                <div class="img-box">
+                                    {% if single.image %}
+                                        <img src="{{single.image.url}}" alt="image">
+                                    {% endif %}
+                                </div>
+                                <div class="content-bottom">
+                                    <p class="info">{{single.content|truncatewords:30}}
+                                    </p>
+                                    <div class="post-meta">
+                                        <div class="left-content">
+                                            <div class="btn-wrapper">
+                                                <a href="{% url 'detail' single.pk %}" class="reading-btn">continue reading</a>
+                                            </div>
+                                        </div>
+                                        <div class="right-content">
+                                            <ul class="list">
+                                                <li class="list-item">
+                                                    <a href="{% url 'writer' single.pk %}">
+                                                        <i class="fa fa-id-card"></i>
+                                                        <span class="text">About
+                                                            {{single.author.username}}
+                                                        </span>
+
+                                                    </li>
+
+                                                    <li class="list-item">
+                                                        <a href="{% url 'profile_view' name=single.author.pk %}">
+                                                            <i class="fa fa-list"></i>
+                                                            <span class="text">{{single.author.username}}
+                                                                Post</span>
+
+                                                        </li>
+
+                                                        <li class="list-item">
+                                                            <a href="#">
+                                                                <i class="far fa-clock icon"></i>
+                                                                <span class="text">{{single.created_at}}</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="list-item">
+                                                            <a href="#">
+                                                                <i class="far fa-share-square icon"></i>
+                                                                <span class="text">share</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+                            <div class="pagination" style="margin-bottom:30px">
+                                <ul class="pagination-list">
+                                    <li>
+
+                                        <div class='pagination justify-content-center'>
+                                            {% if page_obj.has_previous %}
+                                                <a href='{% url "content" %}?page={{ page_obj.previous_page_number }}'>
+                                                    <i class="fa fa-angle-left"></i>
+                                                </a>
+                                            {% endif %}
+
+                                            <span class='mx-4'>
+                                                Page
+                                                <span style="background:#f13b3a; margin: 10px;
+                                                padding: 6px;color:#fff">{{ page_obj.number }}
+                                                </span>
+                                                of
+                                                {{ page_obj.paginator.num_pages }}
+                                            </span>
+
+                                            {% if page_obj.has_next %}
+                                                <a href='{% url "content" %}?page={{ page_obj.next_page_number }}'>
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4 col-xl-3 widg">
+                            <div class="widget-area-wrapper style-02">
+                                <div class="widget widget-search  wow bounceInUp" data-wow-duration="3.5s">
+                                    <form class="form-inline">
+                                        <div class="form-group">
+                                            <input type="search" class="form-control" placeholder="search...">
+                                        </div>
+                                        <button type="submit" class="form-btn-1">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                {% if request.user.is_authenticated %}
+                                    <div class="widget widget-about-author wow bounceInUp" data-wow-duration="3.7s">
+                                        <h5 class="widget-title">about author</h5>
+                                        <div class="img-box">
+                                            <img
+                                                src="{{user.profile.image.url}}"
+                                                alt="image"
+                                                style="height:150px;width:150px;background-position: center;">
+                                            <div class="content">
+                                                <h3 class="title">
+                                                    <a href="#">{{user}}</a>
+                                                </h3>
+                                                <p class="info">{{user.profile.bio}}.</p>
+
+                                                <ul class="social-link-list">
+                                                    <li class="list-item">
+                                                        <a href="#" tabindex="-1">
+                                                            <i class="fab fa-facebook-f icon"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-item">
+                                                        <a href="#" tabindex="-1">
+                                                            <i class="fab fa-twitter icon"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-item">
+                                                        <a href="#" tabindex="-1">
+                                                            <i class="fab fa-instagram icon"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-item">
+                                                        <a href="#" tabindex="-1">
+                                                            <i class="fas fa-rss icon"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                {% endif %}
+
+                                <div class="widget widget-gallery wow bounceInUp" data-wow-duration="3.9s">
+                                    <h5 class="widget-title">instagram</h5>
+                                    <ul class="list">
+                                        <li>
+                                            <a href="#">
+                                                <img src="{% static 'assets/img/widget/gallery/travel/01.png'%}" alt="image">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="{% static 'assets/img/widget/gallery/travel/02.png'%}" alt="image">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="{% static 'assets/img/widget/gallery/travel/03.png'%}" alt="image">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <img src="{% static 'assets/img/widget/gallery/travel/04.png'%}" alt="image">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="widget widget-recent-post wow bounceInUp" data-wow-duration="3.6s">
+                                    <h5 class="widget-title">Latest Posts</h5>
+                                    {% for single in slic %}
+                                        <ul class="post-list">
+                                            <li>
+                                                <div class="thumb">
+                                                    <img src="{{single.image.url }}" alt="image" style="height:100px;width:auto">
+                                                </div>
+                                                <div class="content">
+                                                    <span class="catg">
+                                                        <a href="#">travel</a>
+                                                    </span>
+                                                    <h5 class="post-title">
+                                                        <a href="#">Are you currently looking at any other providers</a>
+                                                    </h5>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="widget widget-add wow bounceInUp" data-wow-duration="3.5s">
+                                    <div class="add-banner-y">
+                                        <a href="#">
+                                            <img src="assets/img/widget/add/03.png" alt="image">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="widget widget-tag wow bounceInUp" data-wow-duration="3.7s">
+                                    <h5 class="widget-title">Tags</h5>
+                                    <div class="tag-wrapper">
+                                        <a href="#" class="btn-tag">food</a>
+                                        <a href="#" class="btn-tag">travel</a>
+                                        <a href="#" class="btn-tag">music</a>
+                                        <a href="#" class="btn-tag">health</a>
+                                        <a href="#" class="btn-tag">fashion</a>
+                                        <a href="#" class="btn-tag">journey</a>
+                                        <a href="#" class="btn-tag">nature</a>
+                                        <a href="#" class="btn-tag">game</a>
+                                        <a href="#" class="btn-tag">flower</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endblock %}

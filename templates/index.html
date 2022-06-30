@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <!-- Mirrored from bytesed.com/tf/ozagi/ by HTTrack Website Copier/3.x
+    [XR&CO'2014], Fri, 10 Jun 2022 15:01:15 GMT -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Home - ozagi - Personal Blog HTML Template</title>
+
+        <link rel="icon" href="favicon.ico" sizes="20x20" type="image/png">
+
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min-v4.6.0.css'%}">
+
+        <link
+            rel="stylesheet"
+            href="{% static 'assets/css/fontawesome.all.min-v5.15.3.css'%}">
+
+        <link
+            rel="stylesheet"
+            href="{% static 'assets/css/line-awesome.min-v1.0.3.css'%}">
+
+        <link rel="stylesheet" href="{% static 'assets/css/slick.min.css'%}">
+
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css'%}">
+
+        <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css'%}">
+
+        <link rel="stylesheet" href="{% static 'assets/css/main-style.css' %}">
+
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css'%}">
+    </head>
+    <body>
+     
+
+        <div class="preloader-inner">
+            <ul class="preloader-main">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+
+        <nav
+            class="navbar navbar-area navbar-expand-lg has-topbar nav-style-01 index-01">
+            <div class="container nav-container custom-header-container">
+                <div class="responsive-mobile-menu">
+                    <div class="logo-wrapper">
+                        <a href="index-2.html" class="logo">
+                            <img src="{% static 'assets/img/logo/Logo-01.png'%}" alt="logo">
+                        </a>
+                    </div>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#bizcoxx_main_menu"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="bizcoxx_main_menu">
+                    <ul class="navbar-nav">
+                        <li >
+                            <a href="{% url 'content' %}">Home</a>
+
+                        </li>
+
+                        {% if request.user.is_authenticated %}
+                            <li>
+                                <a href="{% url 'post' %}">New Post</a>
+                            </li>
+
+                            <li >
+                                <a href="{% url 'profile'%}">Profile</a>
+
+                            </li>
+                            <li>
+                                <a href="contact.html">About</a>
+                            </li>
+                            <li >
+                                <a href="{% url 'logout' %}">Logout</a>
+                            </li>
+
+                        {% else %}
+                            <li>
+                                <a href="{% url 'register'%}">Register</a>
+                            </li>
+                            <li >
+                                <a
+                                    style="background:#f13b3a; padding:10px 20px;border-radius: 10px 100px / 120px;color:#fff"
+                                    href="{% url 'userlogin' %}">Login</a>
+                            </li>
+
+                        {% endif %}
+
+                    </ul>
+                </div>
+                <div class="nav-right-content">
+                    <ul>
+                        <li class="account">
+                            <a href="#" id="search_icon">
+                                <span class="text">search</span>
+                                <i class="las la-search icon"></i>
+                            </a>
+
+                            <div class="search-popup" id="search_popup">
+                                <div class="search-popup-inner">
+                                    <form action="https://bytesed.com/tf/ozagi/index.html">
+                                        <span class="search-popup-close-btn" id="search-popup-close-btn">×</span>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Search...">
+                                        </div>
+                                        <button class="search-btn" type="submit">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        {% block content %}{% endblock %}
+
+        <footer class="footer-area index-01">
+
+            <div class="footer-bottom">
+                <div class="copyright-area">
+                    <div class="container custom-container-1515">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="copyright-area-inner">
+                                    <div class="left-content">
+                                        <p class="copyright">Privacy Policy | Terms & Conditions</p>
+                                    </div>
+                                    <div class="right-content">
+                                        <p class="copyright">All copyright (C) 2021 Reserved</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <div class="scroll-to-top">
+            <i class="fas fa-angle-up"></i>
+        </div>
+
+        <script src="{% static 'assets/js/jquery-3.6.0.min.js'%}"></script>
+
+        <script src="{% static 'assets/js/jquery-migrate-3.3.2.js'%}"></script>
+
+        <script src="{% static 'assets/js/bootstrap.min-v4.6.0.js'%}"></script>
+
+        <script src="{% static 'assets/js/slick.min.js'%}"></script>
+
+        <script src="{% static 'assets/js/wow.js'%}"></script>
+        {% block link %}
+            <script src="{% static 'assets/js/jquery.magnific-popup.min.js'%}"></script>
+        {% endblock %}
+        <script src="{% static 'assets/js/popper.min.js'%}"></script>
+
+        <script src="{% static 'assets/js/main.js'%}"></script>
+    </body>
+
+    <!-- Mirrored from bytesed.com/tf/ozagi/ by HTTrack Website Copier/3.x
+    [XR&CO'2014], Fri, 10 Jun 2022 15:02:00 GMT -->
+</html>

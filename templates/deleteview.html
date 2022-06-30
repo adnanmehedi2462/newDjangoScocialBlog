@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+<style>
+    .testbox{
+       height:500px
+    }
+    @media only screen and (max-width: 991px) {
+
+        .testbox{
+            margin-top: 100px;
+        }           
+    }
+    
+</style>
+<div class="offset-md-5">
+<div class="testbox">
+<div class="card" style="width: 18rem; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+    <img class="card-img-top"  src="https://cdn.dribbble.com/users/1088223/screenshots/4691009/media/bcff1b935dc6b0322da556a67281960c.gif" alt="Card image cap">
+    <div class="card-body">
+        <form method="post" style="text-align:center">
+            {%  csrf_token %}
+            <button  class="btn btn-danger" >Confirm</button>
+             <a href="{{request.META.HTTP_REFERER|escape}}"  class="btn btn-success">Back</a>
+        </form>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% load static %}
+
+    {% load crispy_forms_tags %}
+
+    <style>
+        .testbox {
+            margin: 20px;
+            padding: 10px;
+        }
+        @media only screen and (max-width: 991px) {
+
+            .testbox {
+                margin-top: 100px;
+            }
+        }
+    </style>
+    <div class="testbox">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div
+                class="col-12 col-md-8  offset-md-2"
+                style=" margin-bottom: 86px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;padding:30px;border-radius:10px">
+                <div class="form-group">
+
+                    {{form|crispy}}
+                </div>
+                <div class="btn-wrapper">
+                    <button type="submit" class="btn-default">Post</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

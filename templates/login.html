@@ -1,0 +1,226 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+<style>
+
+  
+
+fieldset, img {border:0}
+
+ol, ul, li {list-style:none}
+
+:focus {outline:none}
+
+body,
+input,
+textarea,
+select {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #4c4c4c;
+}
+
+p {
+  font-size: 12px;
+  width: 150px;
+  display: inline-block;
+  margin-left: 18px;
+}
+h1 {
+  font-size: 32px;
+  font-weight: 300;
+  color: #4c4c4c;
+  text-align: center;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+
+html{
+  background-color: #ffffff;
+}
+
+.testbox {
+  margin: 20px auto;
+  width: 343px; 
+  height: auto; 
+  -webkit-border-radius: 8px/7px; 
+  -moz-border-radius: 8px/7px; 
+  border-radius: 8px/7px; 
+  background-color: #ebebeb; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  border: solid 1px #cbc9c9;
+}
+
+input[type=radio] {
+  visibility: hidden;
+}
+
+form{
+  margin: 0 30px;
+}
+
+
+
+
+
+hr{
+  color: #a9a9a9;
+  opacity: 0.3;
+}
+
+input[type=text],input[type=password]{
+  width: 200px; 
+  height: 39px; 
+  -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
+  border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
+  background-color: #fff; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 1px #cbc9c9;
+  margin-left: -5px;
+  margin-top: 13px; 
+  padding-left: 10px;
+}
+
+
+
+#icon {
+  display: inline-block;
+  width: 30px;
+  background-color: #3a57af;
+  padding: 8px 0px 8px 15px;
+  margin-left: 15px;
+  -webkit-border-radius: 4px 0px 0px 4px; 
+  -moz-border-radius: 4px 0px 0px 4px; 
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
+  border: solid 0px #cbc9c9;
+}
+
+.gender {
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.accounttype img {
+    margin-left: 76px;
+    margin-top: -2px;
+    justify-content: center;
+    height: 107px;
+
+}
+
+button {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+
+  padding: 5px 10px  ;
+ 
+
+  float: right;
+  text-decoration: none;
+
+  -webkit-border-radius: 5px; 
+  -moz-border-radius: 5px; 
+  border-radius: 5px; 
+  background-color: #f13b3a; 
+
+  box-shadow: 0 3px #f13b3a;
+  transition: all 0.1s linear 0s; 
+  border: 2px solid #f13b3a;
+
+
+
+}
+
+
+.testbox {
+  margin: 20px auto;
+  width: 343px;
+  height: auto;
+  padding-bottom: 40px;
+  -webkit-border-radius: 8px/7px;
+  -moz-border-radius: 8px/7px;
+  border-radius: 8px/7px;
+  background-color: #ebebeb;
+  -webkit-box-shadow: 1px 2px 5px rgb(0 0 0 / 31%);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31);
+  box-shadow: 1px 2px 5px rgb(0 0 0 / 31%);
+  border: solid 1px #cbc9c9;
+}
+#icon {
+    display: inline-block;
+    width: 30px;
+    background-color: #f13b3a;
+    padding: 7px 0px 8px 10px;
+    margin-left: 15px;
+    -webkit-border-radius: 4px 0px 0px 4px;
+    -moz-border-radius: 4px 0px 0px 4px;
+    border-radius: 4px 0px 0px 4px;
+    color: white;
+    -webkit-box-shadow: 1px 2px 5px rgb(0 0 0 / 9%);
+    -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+    box-shadow: 1px 2px 5px rgb(0 0 0 / 9%);
+    border: solid 0px #f13b3a
+}
+@media only screen and (max-width: 991px) {
+
+    .testbox{
+        margin-top: 100px;
+    }           
+}
+
+</style>
+
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+
+<div class="testbox">
+  <h1>Login</h1>
+  {% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" style="background-color: red;color:#fff;margin-top: 30px;">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+  
+      <p style="color:#fff">Username or Password is incorrect !!</p>
+  </div>
+  {% endfor %}
+  <form action="" method="POST">
+    {% csrf_token %}
+      <hr>
+    <div class="accounttype">
+    <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png">
+    </div>
+  <hr>
+
+  <label id="icon" for="name"><i class="icon-user"></i></label>
+ 
+  <input type="text" name="username" placeholder="Username">
+  <label id="icon" for="name"><i class="icon-shield"></i></label>
+  <input type="password" name="password" placeholder="password" >
+   <p>If you have account then <a href="#">Login</a>.</p>
+   <button type="submit">Login</button>
+   
+  </form>
+</div>
+{% comment %} <script>
+
+
+var fild = document.getElementsByTagName('input')
+fild[2].placeholder = 'Username..';
+fild[3].placeholder = 'Password';
+fild[4].placeholder = 'Confirm Password';
+</script> {% endcomment %}
+{% endblock %}

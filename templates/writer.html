@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% load static %}
+ <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner">
+                        <h2 class="page-title">{{writerview.author.username}}</h2>
+                        <ul class="page-list">
+                            <li class="list-item">
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="list-item">
+                                <a href="#">author</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-author-area-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="img-box">
+                        <img
+                            src="{{writerview.author.profile.image.url}}"
+                            alt=""
+                            style="margin-bottom: 63px;height:300px;width:auto;border-radius: 25% 10%;">
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="content-wrap">
+                        <div class="content">
+                            <h4 class="title">{{writerview.author.first_name}}
+                                {{writerview.author.last_name}}</h4>
+                            <a>{{writerview.author.email}}</a><br>
+
+                            <span class="sub-title">{{writerview.author.profile.bio}}</span>
+
+
+
+
+
+
+
+
+                            <p class="info">{{writerview.author.profile.about}}
+                            </p>
+
+                            <div class="socila-link-wrap">
+                                <ul class="social-link-list">
+                                    <li class="list-item">
+                                        <a href="#">
+                                            <i class="lab la-facebook-f icon"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-item">
+                                        <a href="#">
+                                            <i class="lab la-instagram icon"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-item">
+                                        <a href="#">
+                                            <i class="lab la-linkedin-in icon"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-item">
+                                        <a href="#">
+                                            <i class="lab la-pinterest-p icon"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div> 
+
+{% endblock %}
